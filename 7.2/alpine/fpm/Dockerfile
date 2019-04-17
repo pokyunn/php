@@ -7,3 +7,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN apk upgrade --update && apk add --no-cache \
     libxml2-dev \
     && docker-php-ext-install pdo_mysql xml soap
+
+# Create code dir
+RUN mkdir /code 
+
+WORKDIR /code
