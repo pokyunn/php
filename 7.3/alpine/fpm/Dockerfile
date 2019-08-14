@@ -33,6 +33,9 @@ RUN set -xe && \
 
 COPY ./docker.conf /usr/local/etc/php-fpm.d/docker.conf
 
+# Use the default production configuration
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
 # Create code dir
 RUN mkdir /code 
 
