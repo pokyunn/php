@@ -28,6 +28,9 @@ RUN set -xe && \
     rm -rf /tmp/* && \
     apk del .memcached-deps .phpize-deps
 
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted gnu-libiconv
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
+
 COPY ./docker.conf /usr/local/etc/php-fpm.d/docker.conf
 
 # Use the default production configuration
