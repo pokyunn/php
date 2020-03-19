@@ -1,3 +1,6 @@
+![Docker Image CI](https://github.com/pokyunn/php/workflows/Docker%20Image%20CI/badge.svg)
+
+
 ## Generate and push image
 
 ```
@@ -11,7 +14,7 @@ docker build -t pokyunn/php:7.2-fpm-alpine ./7.2/alpine/fpm
 docker push pokyunn/php:7.2-fpm-alpine
 ```
 
-## Cleanup local 
+## Cleanup local
 
 ```
 docker container prune -f
