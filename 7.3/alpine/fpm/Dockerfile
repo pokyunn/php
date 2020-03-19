@@ -1,8 +1,5 @@
 FROM php:7.3-fpm-alpine
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && composer global require hirak/prestissimo --no-plugins --no-scripts
-
 # Install dependencies
 RUN apk upgrade --update && apk add --no-cache \
     libxml2-dev libzip-dev libpng-dev \
@@ -36,7 +33,10 @@ COPY ./docker.conf /usr/local/etc/php-fpm.d/docker.conf
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && composer global require hirak/prestissimo --no-plugins --no-scripts
+
 # Create code dir
-RUN mkdir /code 
+RUN mkdir /code
 
 WORKDIR /code
