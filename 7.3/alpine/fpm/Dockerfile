@@ -2,7 +2,8 @@ FROM php:7.3-fpm-alpine
 
 # Install dependencies
 RUN apk upgrade --update && apk add --no-cache \
-    git libxml2-dev libzip-dev libpng-dev \
+    git findutils \
+    libxml2-dev libzip-dev libpng-dev \
     && docker-php-ext-install pdo_mysql xml soap zip gd
 
 # Install PHP Extensions (igbinary & memcached)
