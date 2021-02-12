@@ -17,12 +17,12 @@ jobs:
     - name: Docker login
       run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Build
-      run: docker build -t php ./7.3/alpine/fpm
+      run: docker build -t php ./8.0/alpine/fpm
     - name: Tags
       run: |
-        docker tag php ${{ secrets.DOCKER_USER }}/php:7.3-fpm-alpine
+        docker tag php ${{ secrets.DOCKER_USER }}/php:8.0-fpm-alpine
         docker tag php ${{ secrets.DOCKER_USER }}/php:latest
     - name: Push
       run: |
-        docker push ${{ secrets.DOCKER_USER }}/php:7.3-fpm-alpine
+        docker push ${{ secrets.DOCKER_USER }}/php:8.0-fpm-alpine
         docker push ${{ secrets.DOCKER_USER }}/php:latest

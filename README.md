@@ -5,13 +5,13 @@
 
 ```
 docker login
-docker build -t pokyunn/php:tagname .
-docker push pokyunn/php:tagname
+docker build -t [username]/php:[tag-name] [path]
+docker push [username]/php:[tag-name]
 
 ex:
 
-docker build -t pokyunn/php:7.2-fpm-alpine ./7.2/alpine/fpm
-docker push pokyunn/php:7.2-fpm-alpine
+docker build -t pokyunn/php:8.0-fpm-alpine ./8.0/alpine/fpm
+docker push pokyunn/php:8.0-fpm-alpine
 ```
 
 ## Cleanup local
@@ -20,3 +20,6 @@ docker push pokyunn/php:7.2-fpm-alpine
 docker container prune -f
 docker image prune -af
 ```
+
+### Cleanup everything
+`docker system prune -af`
