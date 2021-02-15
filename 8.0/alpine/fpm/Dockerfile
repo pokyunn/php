@@ -52,9 +52,13 @@ RUN sed -i \
         -e 's/^\(group = www-data\)/;\1/' \
         /usr/local/etc/php-fpm.d/www.conf
 
-# Create code dir
-RUN mkdir /code && chown www-data: /code
+RUN set -eux; \
+	addgroup -g 1000 -S host-user; \
+	adduser -u 1000 -D -S -G host-user host-user
 
-USER www-data
+# Create code dir
+RUN mkdir /code && chown host-user: /code
+
+USER host-user
 
 WORKDIR /code
