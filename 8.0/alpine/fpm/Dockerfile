@@ -42,7 +42,7 @@ RUN sed -i \
         -e 's/^;\(date.timezone =.*\)/date.timezone = UTC/' \
         -e 's/^\(max_execution_time =\).*/\1 120/' \
         -e 's/^\(max_input_time =\).*/\1 120/' \
-        -e 's/^\(memory_limit =\).*/\1 256M/' \
+        -e 's/^\(memory_limit =\).*/\1 512M/' \
         -e 's/^\(error_reporting =\).*/\1 E_ALL/' \
         /usr/local/etc/php/php.ini
 
