@@ -4,7 +4,7 @@ FROM php:8.0.20-fpm-alpine3.16
 RUN apk upgrade --update && apk add --no-cache \
     ca-certificates git findutils icu-dev \
     libxml2-dev libzip-dev libpng-dev \
-    && docker-php-ext-install pdo_mysql xml soap zip gd intl
+    && docker-php-ext-install pdo_mysql xml soap zip gd intl bcmath
 
 # Install PHP Extensions (igbinary & memcached)
 RUN apk add --no-cache --update libmemcached-libs zlib
