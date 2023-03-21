@@ -23,3 +23,10 @@ docker image prune -af
 
 ### Cleanup everything
 `docker system prune -af`
+
+
+### Test
+```
+docker container run --rm -v $(pwd):/app/ pokyunn/php:8.0-fpm-alpine php /app/test.php
+docker container run --rm -v $(pwd):/app/ pokyunn/php:8.0-fpm-alpine php -v
+```
