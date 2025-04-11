@@ -7,22 +7,36 @@ on:
     branches: [ master ]
 
 jobs:
-
-  build:
-
+  build-and-push-image:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Docker login
-      run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build
-      run: docker build -t php ./8.3/alpine/fpm
-    - name: Tags
-      run: |
-        docker tag php ${{ secrets.DOCKER_USER }}/php:8.3-fpm-alpine
-        docker tag php ${{ secrets.DOCKER_USER }}/php:latest
-    - name: Push
-      run: |
-        docker push ${{ secrets.DOCKER_USER }}/php:8.3-fpm-alpine
-        docker push ${{ secrets.DOCKER_USER }}/php:latest
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push PHP 8.0
+        uses: docker/build-push-action@v6
+        with:
+          context: ./8.0/alpine/fpm
+          push: true
+          tags: ${{ secrets.DOCKER_USER }}/php:8.0-fpm-alpine
+
+      - name: Build and push PHP 8.3
+        uses: docker/build-push-action@v6
+        with:
+          context: ./8.3/alpine/fpm
+          push: true
+          tags: ${{ secrets.DOCKER_USER }}/php:8.3-fpm-alpine
+
+      - name: Build and push PHP Latest
+        uses: docker/build-push-action@v6
+        with:
+          context: ./8.3/alpine/fpm
+          push: true
+          tags: ${{ secrets.DOCKER_USER }}/php:latest
