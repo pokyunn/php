@@ -41,7 +41,9 @@ RUN sed -i \
         -e 's/^;\(date.timezone =.*\)/date.timezone = UTC/' \
         -e 's/^\(max_execution_time =\).*/\1 120/' \
         -e 's/^\(max_input_time =\).*/\1 120/' \
-        -e 's/^\(memory_limit =\).*/\1 512M/' \
+        -e 's/^\(memory_limit =\).*/\1 1G/' \
+        -e 's/^\(upload_max_filesize =\).*/\1 50M/' \
+        -e 's/^\(post_max_size =\).*/\1 50M/' \
         -e 's/^\(error_reporting =\).*/\1 E_ALL/' \
         /usr/local/etc/php/php.ini
 
