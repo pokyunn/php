@@ -1,4 +1,4 @@
-FROM php:8.4.4-fpm-alpine
+FROM php:8.4-fpm-alpine
 
 # Install dependencies
 RUN apk upgrade --update \
