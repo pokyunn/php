@@ -10,8 +10,8 @@ docker push [username]/php:[tag-name]
 
 ex:
 
-docker build -t pokyunn/php:8.4-fpm-alpine ./8.4/alpine/fpm --no-cache
-docker push pokyunn/php:8.4-fpm-alpine
+docker build -t pokyunn/php:8.5-fpm-alpine ./8.5/alpine/fpm --no-cache
+docker push pokyunn/php:8.5-fpm-alpine
 ```
 
 ## Cleanup local
@@ -27,6 +27,6 @@ docker image prune -af
 
 ### Test
 ```
-docker container run --rm -v $(pwd):/app/ pokyunn/php:8.4-fpm-alpine php /app/test.php
-docker container run --rm -v $(pwd):/app/ pokyunn/php:8.4-fpm-alpine php -v
+docker container run --rm -v $(pwd):/app/ pokyunn/php:8.5-fpm-alpine php /app/test.php
+docker container run --rm -v $(pwd):/app/ pokyunn/php:8.5-fpm-alpine php -v
 ```

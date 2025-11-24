@@ -36,6 +36,13 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USER }}/php:8.4-fpm-alpine
 
+      - name: Build and push PHP 8.5
+        uses: docker/build-push-action@v6
+        with:
+          context: ./8.5/alpine/fpm
+          push: true
+          tags: ${{ secrets.DOCKER_USER }}/php:8.5-fpm-alpine
+
       - name: Build and push PHP Latest
         uses: docker/build-push-action@v6
         with:
